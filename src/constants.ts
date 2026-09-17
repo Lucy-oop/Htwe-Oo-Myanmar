@@ -52,38 +52,3 @@ export function buildLayout(count: number, cols: number): number[][] {
   }
   return rows;
 }
-
-/**
- * Curtain stage that opens at the top of the gallery panel. Drop the artwork
- * into `public/images/theater/` under these names and it is picked up
- * automatically; until then each layer falls back to a CSS stand-in, so the
- * section reads correctly before the files exist.
- *
- *  closing_curtain.png  full closed red curtain, drawn edge to edge. It is split
- *                      down the middle at runtime, so supply ONE closed image
- *                      rather than two halves.
- *  valance.png         gold pelmet/swag. Transparent PNG, anchored top.
- *  stage.jpg           dark wooden stage revealed behind the curtain.
- */
-export const CURTAIN_ASSETS = {
-  curtain: asset('images/theater/closing_curtain.png'),
-  valance: asset('images/theater/valance.png'),
-  stage: asset('images/theater/stage.jpg'),
-};
-
-/**
- * The two puppet clips, scrubbed by cursor position and never played, so each
- * must start head-on at t=0 and reach a full turn on its final frame.
- *
- * Served from public/ rather than a remote host on purpose: seeking is the
- * entire animation here, and a cross-origin video can stall on every seek.
- * asset() resolves them against the Vite base so they survive the /Htweoo/
- * subpath on Pages.
- *
- * These exact paths are what the stage loads. Replacing a render means
- * overwriting the file at the same path; nothing else needs editing.
- */
-export const CURTAIN_VIDEOS = {
-  lookLeft: asset('videos/theater/left.mp4'),
-  lookRight: asset('videos/theater/right.mp4'),
-};

@@ -1,15 +1,12 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { GALLERY_IMAGES, buildLayout } from '../constants';
-import CurtainStage from './CurtainStage';
 
 interface GalleryGridProps {
   panelRef: React.RefObject<HTMLDivElement | null>;
   innerRef: React.RefObject<HTMLDivElement | null>;
-  /** Forwarded to the curtain so HomePage's loop can drive its open amount. */
-  curtainRef: React.RefObject<HTMLDivElement | null>;
 }
 
-export default function GalleryGrid({ panelRef, innerRef, curtainRef }: GalleryGridProps) {
+export default function GalleryGrid({ panelRef, innerRef }: GalleryGridProps) {
   const [cols, setCols] = useState(4);
 
   useEffect(() => {
@@ -46,11 +43,6 @@ export default function GalleryGrid({ panelRef, innerRef, curtainRef }: GalleryG
           paddingBottom: '30vh',
         }}
       >
-        {/* The black space at the top of the panel, now holding the curtain.
-            One viewport tall, so it fills the frame exactly once the panel has
-            finished sliding up. */}
-        <CurtainStage rootRef={curtainRef} />
-
         <div
           className="grid gap-4 sm:gap-6 lg:gap-8 w-full max-w-450 mx-auto px-4 sm:px-8"
           style={{

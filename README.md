@@ -34,24 +34,3 @@ under the wrong prefix. The router takes its basename from
 The workflow also copies `index.html` to `404.html` (Pages has no rewrite
 rules, so a hard refresh on a route would otherwise 404) and touches
 `.nojekyll`.
-
-## Theatre curtain
-
-The homepage curtain lives in `src/components/CurtainStage.tsx`, mounted at the
-top of the gallery panel. Scroll drives a single CSS custom property, `--p`
-(0 shut, 1 open), written each frame by the loop in `src/pages/HomePage.tsx`;
-every layer derives its motion from that. Cursor tracking is in
-`src/lib/useCursorHeadTrack.ts`.
-
-Assets — replace in place, no code changes needed:
-
-| Path | Notes |
-| --- | --- |
-| `public/videos/theater/turn_left.mp4` | Scrubbed, never played. Head-on at t=0, full turn on the last frame. |
-| `public/videos/theater/turn_right.mp4` | Same, mirrored. Must match the left clip's duration and frame-0 pose. |
-| `public/images/theater/closing_curtain.png` | One *closed* curtain, split down the middle at runtime. |
-| `public/images/theater/valance.png` | Trimmed of transparent padding; tiled twice across the width. |
-| `public/images/theater/stage.jpg` | Frame 0 of the left clip. Regenerate whenever the clips change. |
-
-Clips are served same-origin on purpose: scrubbing seeks constantly, and a
-cross-origin video can stall on every seek.
