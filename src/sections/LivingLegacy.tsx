@@ -1,5 +1,5 @@
 import React from 'react';
-import { handleImageError, FALLBACK_IMAGE } from '../lib/images';
+import { handleImageError, asset } from '../lib/images';
 
 /**
  * Living-legacy split, pull quote and "A Legacy Continued".
@@ -88,8 +88,8 @@ export default function LivingLegacy({ onOpenBooking }: LivingLegacyProps) {
             <img
               onError={handleImageError}
               className="w-full h-full object-cover"
-              alt="Detail shot of the worn, polished wooden floor of a traditional puppet stage."
-              src={FALLBACK_IMAGE}
+              alt="Two costumed Myanmar marionettes, one red-faced and one green, dancing on a polished wooden stage."
+              src={asset('images/legacy-stage.png')}
             />
             <svg
               className="absolute bottom-2 right-2 w-12 h-12 opacity-30 text-amber-400"
