@@ -34,3 +34,21 @@ under the wrong prefix. The router takes its basename from
 The workflow also copies `index.html` to `404.html` (Pages has no rewrite
 rules, so a hard refresh on a route would otherwise 404) and touches
 `.nojekyll`.
+
+## Hero marionettes
+
+The homepage hero is two clips scrubbed by cursor position, never played
+through: `src/components/VideoBackground.tsx` seeks each frame based on how far
+the pointer sits from centre. Touch devices fall back to alternating autoplay.
+
+Assets — replace in place, no code changes needed:
+
+| Path | Notes |
+| --- | --- |
+| `public/videos/hero/left.mp4` | Shown when the cursor is right of centre. Head-on at t=0, full turn on the last frame. |
+| `public/videos/hero/right.mp4` | Shown when the cursor is left of centre. Same requirements, mirrored. |
+
+Clips are served same-origin on purpose: scrubbing seeks constantly, and a
+cross-origin video can stall on every seek. They also need the `moov` atom
+ahead of `mdat` (`ffmpeg -movflags +faststart`) or the first seek waits on the
+whole file.

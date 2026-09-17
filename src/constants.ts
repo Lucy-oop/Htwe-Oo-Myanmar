@@ -1,8 +1,19 @@
 import { asset } from './lib/images';
 
+/**
+ * The two hero clips, scrubbed by cursor position and never played through, so
+ * each must start head-on at t=0 and reach a full turn on its final frame.
+ * `left` is the clip shown when the cursor sits right of centre, and vice
+ * versa — the keys name the cursor side, not the direction of the turn.
+ *
+ * Served from public/ rather than a remote host: seeking is the entire
+ * animation here, and a cross-origin video can stall on every seek. The
+ * Supabase copies these replace stopped resolving. asset() resolves them
+ * against the Vite base so they survive the /Htweoo/ subpath on Pages.
+ */
 export const VIDEO_ASSETS = {
-  left: 'https://gcfhxssieicuekikmbpf.supabase.co/storage/v1/object/public/Video(htweOo)/Marionette_turning_head_right_202608311032.mp4',
-  right: 'https://gcfhxssieicuekikmbpf.supabase.co/storage/v1/object/public/Video(htweOo)/Marionette_puppet_turns_head_202608311031.mp4',
+  left: asset('videos/hero/left.mp4'),
+  right: asset('videos/hero/right.mp4'),
 };
 
 // Local gallery assets — files live in public/images/ and are served from /images/
