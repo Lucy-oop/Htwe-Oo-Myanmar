@@ -4,12 +4,15 @@ Traditional Burmese marionette theatre — Phnom Penh & Bangkok.
 
 ## Live site
 
-**https://lucy-oop.github.io/Htweoo/**
+**https://lucy-oop.github.io/Htwe-Oo-Myanmar/**
 
-That is the only deployed site. There is an older `Lucy-oop/Htwe-Oo-Myanmar`
-repo whose Pages is set to "Deploy from a branch", so it serves raw `.tsx`
-source and renders a blank white page. It predates this codebase — ignore it,
-or delete it / turn its Pages off to avoid confusion.
+Served from `Lucy-oop/Htwe-Oo-Myanmar`. That repo's Pages source must be set to
+**GitHub Actions** (Settings → Pages → Build and deployment → Source). It was
+previously "Deploy from a branch", which serves raw `.tsx` and renders a blank
+white page; the workflow below cannot override that setting.
+
+`Lucy-oop/Htweoo` hosted this site earlier, at https://lucy-oop.github.io/Htweoo/.
+Turn its Pages off or delete it to avoid two live copies.
 
 ## Development
 

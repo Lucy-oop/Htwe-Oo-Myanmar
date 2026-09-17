@@ -9,7 +9,7 @@ import { asset } from './lib/images';
  * Served from public/ rather than a remote host: seeking is the entire
  * animation here, and a cross-origin video can stall on every seek. The
  * Supabase copies these replace stopped resolving. asset() resolves them
- * against the Vite base so they survive the /Htweoo/ subpath on Pages.
+ * against the Vite base so they survive the /<repo>/ subpath on Pages.
  */
 export const VIDEO_ASSETS = {
   left: asset('videos/hero/left.mp4'),
